@@ -19,9 +19,17 @@ RUN apk add --update \
     php5-pdo_mysql \
     php5-mysqli \
     php5-xml \
-    php5-zlib
+    php5-phar \
+    php5-dom \
+    php5-zlib \
+    bash \
+    curl \
+    wget \
+    git
 
 RUN rm -rf /var/cache/apk/* && rm -rf /tmp/*
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin --filename=composer
 
 ADD symfony.ini /etc/php5/fpm/conf.d/
 ADD symfony.ini /etc/php5/cli/conf.d/
